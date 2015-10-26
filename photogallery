@@ -1,0 +1,106 @@
+#set($cons = $dotcontent.pull("+contentType:Gburgphoto +(conhost:ec241c1d-cb5c-4d01-8620-6b2954731363 conhost:SYSTEM_HOST) +_all:g*",10,"modDate desc"))
+
+#if ($UtilMethods.isSet($GBurgPhotoGallery2))
+  <h3>$!{GBurgPhotoGallery2}</h3>
+#end
+#if($cons.size() > 0)
+  <ul class="GBurgPhotoGallery2">
+    #foreach($con in $cons)
+      <li>
+        <a class="js-fancybox-img thumb image-thumb small" href="/contentAsset/resize-image/$con.identifier/fileAsset" rel="photo-gallery" title="$!{con.title}">
+          <img src="/contentAsset/image/${con.identifier}/fileAsset/filter/Thumbnail/thumbnail_w/200/thumbnail_h/200/" alt="$!{con.title}" />
+        </a>
+      </li>
+    #end
+  </ul>
+#else
+  <div class="alert alert-info">
+    Upload Some Files Yo.
+  </div>
+#end
+
+
+
+
+
+
+<img src="/contentAsset/image/${con.photofolder}/fileAsset/filter/Thumbnail/thumbnail_w/200/thumbnail_h/200/" alt="$con.Image" />
+
+            <a class="js-fancybox-img thumb image-thumb small" href="/contentAsset/resize-image/$con.identifier/fileAsset" rel="photo-gallery" title="$con.photoFolder">
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    <p>
+    #foreach($con in $dotcontent.pull("+contentType:Gburgphoto +(conhost:ec241c1d-cb5c-4d01-8620-6b2954731363 conhost:SYSTEM_HOST)",10,"modDate desc"))
+    
+    <img src="/contentAsset/image/$con.image.map.identifier/fileAsset/filter/Resize/resize_w/500" />
+       
+       
+
+#end
+    </p>
+    
+    
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+#set($_qk = "+structureName:FileAsset +confolder:$!{folder1}*")
+#set($cons = $dotcontent.pull(${_qk},$!{numberOfResults},"Document.sysPublishDate desc"))
+
+#if($cons.size() > 0)
+	<div id="slider1" class="carousel slide" data-ride="carousel">
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			#set($count = 0)
+			#foreach($con in $cons)
+				#if($count == 0)
+					<div class="item active">
+				#else
+					<div class="item">
+				#end
+					<img src="/contentAsset/resize-image/$con.identifier/fileAsset" alt="$!{con.title}">
+				</div>
+				#set($count = $count + 1)
+			#end
+		</div>
+	</div>
+	
+	<!-- Indicators -->
+	<ol class="list-inline li-pic">
+		#set($count = 0)
+		#foreach($con in $cons)
+			<li data-target="#slider1" data-slide-to="$count">
+				<div class="item"><img src="/contentAsset/image/${con.identifier}/fileAsset/filter/Thumbnail/thumbnail_h/50/" alt="$!{con.title}"></div>
+			</li>
+			#set($count = $count + 1)
+		#end
+	</ol>
+#else
+  <div class="alert alert-info">
+    There currently no images in the folder.
+  </div>
+#end
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
+<div id="slider1" class="carousel slide" data-ride="carousel">
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			#set($count = 0)
+    #foreach($con in $dotcontent.pull("+contentType:Gburgphoto +(conhost:ec241c1d-cb5c-4d01-8620-6b2954731363 conhost:SYSTEM_HOST)",10,"modDate desc"))
+
+#if($count == 0)
+					<div class="item active">
+				#else
+					<div class="item">
+				#end
+    <img src="/contentAsset/image/$con.image.map.identifier/fileAsset/filter/Resize/resize_w/500" />
+				</div>
+				#set($count = $count + 1)
+			#end
+		</div>
+	</div>
