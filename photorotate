@@ -1,0 +1,17 @@
+<div id="slider1" class="carousel slide" data-ride="carousel">
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			#set($count = 0)
+    #foreach($con in $dotcontent.pull("+contentType:Gburgphoto +(conhost:ec241c1d-cb5c-4d01-8620-6b2954731363 conhost:SYSTEM_HOST)",10,"modDate desc"))
+
+#if($count == 0)
+					<div class="item active">
+				#else
+					<div class="item">
+				#end
+    <img src="/contentAsset/image/$con.image.map.identifier/fileAsset/filter/Resize/resize_w/500" />
+				</div>
+				#set($count = $count + 1)
+			#end
+		</div>
+	</div>
