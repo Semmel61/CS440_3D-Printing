@@ -1,0 +1,25 @@
+<ul class="courselisting">
+	#foreach($con in $dotcontent.pull("+structureName:Course +(conhost:$host.identifier conhost:SYSTEM_HOST)",0,"Course.CourseTitle"))
+		<li class="media">
+			<article>
+			<a class="pull-left" href="#">
+				#if ($UtilMethods.isSet(${con.photo.rawUri}))
+					<img src="/contentAsset/resize-image/$con.identifier/photo?w=75" alt="$!con.firstName $!con.lastName" />
+				#elseif($con.gender.selectValue == "male")
+					<img src="/images/icons/profile-male.png" alt="$!con.firstName $!con.lastName" width="75" />
+				#else
+					<img src="/images/icons/profile-female.png" alt="$!con.firstName $!con.lastName" width="75" />          
+				#end
+			</a>
+			<div class="media-body">
+				<h4 class="media-heading name">$!con.firstName $!con.lastName</h4>
+				<ul class="member-info">
+					<li class="job-title">$!con.jobTitle</li>
+					<li class="phone">$!con.phone</li>
+					<li class="email"><a href="mailto:$!con.email">$!con.email</a></li>
+				</ul>
+			</div>
+			</article>
+		</li>
+	#end
+</ul>
