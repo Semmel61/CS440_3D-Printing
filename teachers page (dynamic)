@@ -1,0 +1,17 @@
+#set ($count = 1)
+
+#foreach($teach in $dotcontent.pull("+contentType:Teachers +(conhost:886ab138-41c4-4b68-9c1c-2973afcca964 conhost:SYSTEM_HOST)",10,"modDate asce"))
+
+        <img src="/contentAsset/image/$teach.photo.map.identifier/fileAsset/filter/Resize/resize_w/250"/>
+        $teach.blurb
+
+    
+#end
+
+
+<p>
+    #foreach($con in $dotcontent.pull("+contentType:CreateAccount +(conhost:886ab138-41c4-4b68-9c1c-2973afcca964 conhost:SYSTEM_HOST)",10,"modDate desc"))
+    $con.email
+    
+#end
+</p>
