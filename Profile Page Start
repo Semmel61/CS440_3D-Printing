@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4" style="background-color:blue;">
+          	<img src="BillyBullet.jpg" class="img-rounded" alt="Profile Picture" width="304" height="236">
+    	</div>
+   	 <div class="col-lg-8" style="background-color:orange;">
+     		 <p> This Section will contain the bulliten information of for the students </p>
+    	</div>
+    </div>
+    <div class="row">
+	<div class="col-lg-4">
+		<button type="button" class="btn btn-primary">Courses <span class="badge">2</span></button>
+		<button type="button" class="btn btn-primary">Projects <span class="badge">3</span></button>
+		<button type="button" class="btn btn-primary">Groups <span class="badge">4</span></button>
+		<button type="button" class="btn btn-primary">Friends <span class="badge">15</span></button>
+    </div>
+    <div class="col-lg-8" style="background-color:orange;" >
+        <p> This section contains the friends social media sections. This page will change due to differences that the group wants to make but this page is based off the mock up. edits are expected to be made.</p>
+    </div>
+    </div>
+</div>
