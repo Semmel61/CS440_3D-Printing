@@ -1,0 +1,132 @@
+<html>
+<head>
+  <title>About the Program</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+    window.onscroll = changePos;
+
+    function changePos() {
+      var menu = document.getElementById("navmenu");
+
+      if (window.pageYOffset > 300) 
+      {
+        menu.style.position = "fixed";
+        menu.style.top = "0";
+      } else {
+        menu.style.position = "";
+        menu.style.top = "";
+      }
+    }
+  </script>
+
+  <div class="container-fluid">
+    <!-- This row is for the GETTYBURG COLLEGE -->
+    <div class="row" style="background-color:rgba(0, 0, 204, 0.8);">
+      <div class="col-xs-12 col-md-12">
+        <a href="/index">
+          <img src="/photos/Gburg G.jpg">
+        </a> 
+        <h1>Gettysburg College 3D Printing Camp!</h1>
+      </div>
+    </div>
+
+    <!-- This row  is for the Summer 2016 -->
+    <div class="row" style="background-color:rgba(255, 153, 0, 1);">
+      <div class="col-xs-12 col-md-12">
+        <br>
+        <h3><b>Summer 2016</b></h3>
+      </div>
+    </div>
+
+    <!-- This row is for the nav menu -->
+    <div class="row">
+      <div class="col-xs-12 col-md-12" id="navmenu">
+        <nav class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/index">
+              <img src="/photos/Gburg G2.jpg">
+            </a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="pages/index">Home</a></li>
+            <li><a href="pages/about">About Us</a></li>
+            <li><a href="pages/teacher_spage">Teachers</a></li>
+            <li><a href="pages/Programs_page">Program</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  </div> <!-- End container for rows -->
+
+
+</head>
+<body>
+  <!--container fluid to use rows -->
+<div class="container-fluid">
+<p></p>
+<p></p>
+<h1>About Page!</h1>
+  <div class="row">
+    <div class="col-md-5" style="background-color:Orange;">
+      <p>This camp is loacted on Gettysburg College's Campus and ran by the Gettysburg College IT Department</p>
+      <p>For more information on the college itself, follow the link to the Gettysburg College main website: <a href="http://www.gettysburg.edu/about">About the College</a></p>
+    </div>
+  </div>
+  <div class="row">
+      <br>
+  </div>
+  <h2> Courses and Professors</h2>
+   <div class="row">
+    <div class="col-md-5" style="background-color:Orange;">
+      <p>The Courses are broken down into the class name and discription on the Program tab for the site</p>
+      <br>
+      <p>The list of teachers and the courses they are teaching are listed on the teachers tab of the site.</p>
+    </div>
+   </div>
+<div class="container-fluid">
+  <h1>Schedule!</h1>
+  <div class="row">
+    <div class="col-md-12" style="background-color:orange;">
+
+ <h2>Table of Activities</h2>
+  <p>Schedule for Week 1 of the Summer Program:</p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Soccer @ 4:00pm on Shirk Field</td>
+        <td>Flag Football @ 4:00pm on Shirk Field</td>
+        <td>Kickball @ 4:00pm on Shirk Field</td>
+      </tr>
+      <tr>
+        <td>Tennis @ 6:30pm on Tennis Courts</td>
+        <td>Capture the Flag @ 6:30pm on Memorial Field</td>
+        <td>Lazer Tag  @ 6:30pm in Plank Gym</td>
+      </tr>
+      <tr>
+        <td>Movie: Imitation Game @ 9:00pm in Mara Auditorium</td>
+        <td>Movie: TBA @ 9:00pm in Mara Auditorium </td>
+        <td>Movie: TBA @ 9:00pm in Mara Auditorium</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    
+</div>
+   
+</div> <!-- Ends Row -->
+</div> <!-- Ends Container-fluid -->
+</body>
+</html>
