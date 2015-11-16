@@ -1,0 +1,107 @@
+<html>
+ <head>
+    <title>Gettysburg 3D Printing Camp</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- This is the header jumbotron -->
+    <div class="row" style="background-color:white">
+     <div class="col-md-12">
+      <h1>Gettysburg College 3D Printing Camp</h1>
+     </div>
+    </div>
+
+    <!-- This row is for the nav menu -->
+    <!-- MOVE JUMBOTRON INFO BEFORE navbar-inverse -->
+   <div class="row">
+    <div class="col-xs-12 col-md-12" id="navmenu">
+      <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/index">
+            <img src="/photos/Gburg G2.jpg">
+          </a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/index">Home</a></li>
+          <li><a href="/pages/guest/about-us">About Us</a></li>
+          <li><a href="/teachers">Teachers</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </nav>
+    </div>
+   </div>
+
+   <style type="text/css">
+    .boxers
+     {
+      background-color: #f5be08;
+     }
+
+     .bannerx
+     {
+      background-color: #1f4b6c;
+      opacity: 0.6;
+      right: 0%;
+      left: 0%;
+     }
+     .pagecolor
+     {
+      background-color:lightblue;
+     }
+
+   </style>
+ </head>
+
+ <body>
+   <div class="container-fluid pagecolor">
+
+    <!-- ROW to create empty time -->
+    <div class="row">
+    <br><br>
+    </div>
+
+     <!-- Col To hold all page content -->
+     <div class="col-md-8 col-md-offset-2">
+
+      <!-- Row holding Profile Pic and Info Bar -->
+      <div class="row">
+        <!-- Col for Profile Pic -->
+        <div class="col-md-3">
+          <div class="well boxers">
+            <p>Placeholder for Profile picture</p>
+          </div>
+        </div>
+
+          <!--Col for Info Bar  -->
+          <div class="col-md-6 col-md-offset-1">
+            <br><br>
+                <!-- Toggle bar -->
+                <ul class="nav nav-pills boxers">
+                  <li class="active"><a data-toggle="pill" href="#myprofile">My Profile</a></li>
+                  <li><a data-toggle="pill" href="#projects">Projects <span class="badge">0</span></a></li>
+                </ul>
+          </div>
+      </div> <!-- End of Row for profile pic/info bar -->
+
+      <!-- Row for Info Bar toggable Data -->
+      <div class="row">
+        <div class="tab-content">
+
+          <!-- My Profile Toggable Data -->
+          <div id="myprofile" class="tab-pane fade in active">
+            <h2>This is the My Profile information</h2>
+          </div>
+          
+          <!-- Projects Toggable Data -->
+          <div id="projects" class="tab-pane fade">
+            <h2>This is the Projects Information</h2>
+          </div>
+        </div>
+      </div> <!-- End of row for info bar toggable data -->
+
+     </div> <!-- End of Col Tag holding all page content -->
+
+   </div> <!-- End of Container fluid -->
+ </body>
+</html>
