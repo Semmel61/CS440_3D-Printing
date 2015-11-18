@@ -1,0 +1,144 @@
+<html>
+ <head>
+    <title>Just Begun</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      
+      <script type="text/javascript">
+    
+window.onscroll = changePos;
+
+function changePos() {
+    var menu = document.getElementById("navmenu");
+   
+    if (window.pageYOffset > 300) 
+    {
+        menu.style.position = "fixed";
+        menu.style.top = "0";
+    } else {
+        menu.style.position = "";
+        menu.style.top = "";
+    }
+}
+</script>
+
+  <div class="container-fluid">
+    <!-- This row is for the GETTYBURG COLLEGE -->
+    <div class="row" style="background-color:rgba(0, 0, 204, 0.8);">
+      <div class="col-xs-12 col-md-12">
+        <a href="/index">
+            <img src="/photos/Gburg G.jpg">
+        </a> 
+        <h1><font color="white">Gettysburg College 3D Printing Camp! </font></h1>
+      </div>
+    </div>
+
+    <!-- This row  is for the Summer 2016 -->
+   <div class="row" style="background-color:rgba(255, 153, 0, 1);">
+    <div class="col-xs-12 col-md-12">
+      <br>
+      <h3><b>Summer 2016</b></h3>
+    </div>
+   </div>
+
+    <!-- This row is for the nav menu -->
+   <div class="row">
+    <div class="col-xs-12 col-md-12" id="navmenu">
+      <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/index">
+            <img src="/photos/Gburg G2.jpg">
+          </a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/index">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/teachers">Teachers</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </nav>
+    </div>
+   </div>
+
+  </div> <!-- End container for rows -->
+      
+      
+ </head>
+ <body>
+ <div class="container-fluid">
+  <div class="row" style="height=100%">
+    <div class="col-md-8" style="background-color:blue;">
+       #foreach($con in $dotcontent.pull("+contentType:Teacherblog +(conhost:c72bd700-509f-4b28-a03d-a521a4c9f941 conhost:SYSTEM_HOST)",10,"modDate desc"))
+    				<h3><b><font color="white">$con.blogtitle</font></b></h3>
+					<b><font color="white">$con.blogtext</font></b>  <br> </br>
+					<font color="white">$con.blogtime</font><br> </br>
+                    <font color="white">$con.blogposter</font><br> </br>
+					#end
+    </div>
+    <div class="col-md-4" style="background-color:orange;">
+    
+     <script type="text/javascript" >
+     
+        $(document).ready(function() {
+     
+    	$("#formName").submit(function(e) {
+    		e.preventDefault();
+   
+      var dataObj= {
+      'blogtitle': $('#reviewTitle').val(),
+      'blogtext': $('#blogtext').val(),
+      'blogposter': $('#teachername').val(),
+      'blogtime': $('#date').val(),	
+      'stInode': '69310e37-34fe-423a-bfb0-3c3f18abccc7'
+      };
+     
+      $.ajax({
+          url: '/api/content/publish/1',
+          type: 'POST',
+          cache: false,
+          data: dataObj,
+          beforeSend: function (request){
+          // This sends the user who authenticates against the dotCMS server
+          // In a real world example, you could use session based authentication
+          request.setRequestHeader("DOTAUTH", window.btoa("admin@dotcms.com:admin"));
+        },
+   
+        success: function(data,status,xhr) {
+          window.location = "http://localhost:8080/pages/teachers/teachers-blog";
+        },
+        error: function(data,status,xhr) {
+          alert("fail: " + data);
+          console.log(data);
+        	},
+          	});
+      	});
+    	});
+	</script>
+      
+	<form id="formName">
+        <label for="reviewTitle" class="required">Blog Sumbission</label>
+        <input type="text"id="reviewTitle" class="form-control" value="Title of Review">
+	<br>
+
+ 
+	<label for="blogtext" class="required">Blog Text</label>
+    <textarea class="form-control" rows="7" id="blogtext"></textarea>
+ 	
+	<br>   
+        <label for="teachername" class="required">Teacher</label>
+        <input type="text" id="teachername" class="form-control" name="title" value="Teacher Name">
+        <br>
+        <label for="date" class="required">Date of Post</label>
+        <input type="text" class="form-control" id="date" name="date" value=" Date">
+        <br>
+
+          <input type="submit" value="Submit" />
+     
+      </form>
+   </div>
+  </div>
+</div>
+
+ </body>
+</html>
