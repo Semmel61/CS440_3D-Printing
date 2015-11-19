@@ -1,0 +1,324 @@
+<html>
+ <head>
+    <title>Gettysburg 3D Printing Camp</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- This is the header jumbotron -->
+    <div class="row" style="background-color:white">
+     <div class="col-md-12">
+      <h1>Gettysburg College 3D Printing Camp</h1>
+     </div>
+    </div>
+
+    <!-- This row is for the nav menu -->
+    <!-- MOVE JUMBOTRON INFO BEFORE navbar-inverse -->
+   <div class="row">
+    <div class="col-xs-12 col-md-12" id="navmenu">
+      <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/index">
+            <img src="/photos/Gburg G2.jpg">
+          </a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/index">Home</a></li>
+          <li><a href="/pages/guest/about-us">About Us</a></li>
+          <li><a href="/pages/guest/teachers">Teachers</a></li>
+          <li><a href="/pages/guest/program">The Program</a></li>
+          <li><a href="/pages/guest/reviews">Reviews</a></li>
+        </ul>
+      </nav>
+    </div>
+   </div>
+
+   <style type="text/css">
+    .boxers
+     {
+      background-color: #f5be08;
+     }
+
+     .bannerx
+     {
+      background-color: #1f4b6c;
+      opacity: 0.6;
+      right: 0%;
+      left: 0%;
+     }
+     .pagecolor
+     {
+      background-color:lightblue;
+     }
+
+   </style>
+ </head>
+
+<body>
+  <div class="container-fluid pagecolor">
+    <div class="row"> <!-- Row holding homepage info -->
+      <div class="col-md-7 col-md-offset-2">
+        <h1>3D Printing Camp</h1>
+        <br>
+        <center><h3>Immerse  Your Middle Schooler in STEM Related Topics!</h3></center>
+         <div class="row"> <!-- to hold the carousel -->
+
+           <div class="col-md-8">
+             <!-- Home Page SlideShow -->
+            <div class="carousel slide" data-ride="carousel" data-interval="5000" data-pause="hover">
+
+               <!-- Wrapper for slides -->
+               <div class="carousel-inner">
+               <!-- SET CAPTIONS INTO TABLES -->
+                #set($count = 0)
+                #foreach($con in $dotcontent.pull("+contentType:HomePagephotoGallery +(conhost:886ab138-41c4-4b68-9c1c-2973afcca964 conhost:SYSTEM_HOST)",10,"modDate desc"))
+
+                  #if($count == 0)
+                    <div class="item active">
+                      <img src="/contentAsset/image/$con.pic.map.identifier/fileAsset"/>
+                      <div class="carousel-caption bannerx">
+                        <p><bold>One of the best programs for pre-college students in 3D Printing!</bold></p>
+                      </div>
+                    </div>
+                    #set($count = 1)
+                  #elseif($count == 1)
+                    <div class="item">
+                      <img src="/contentAsset/image/$con.pic.map.identifier/fileAsset"/>
+                      <div class="carousel-caption bannerx">
+                        <p><bold>Summer 2016 Projects!</bold></p>
+                      </div>
+                    </div>
+                  #set($count = 2)
+                  #else
+                  <div class="item">
+                    <img src="/contentAsset/image/$con.pic.map.identifier/fileAsset"/>
+                      <div class="carousel-caption bannerx">
+                         <p><bold>Interested? Apply for the Program Today!</bold></p>
+                      </div>
+                  </div>
+                  #set($count = 0)
+                  #end
+                #end
+              </div> <!-- Ends inner carousel -->
+            </div> <!-- Ends Carousel -->
+          </div>
+
+          <div class="col-md-4">
+            <div class="well boxers">
+              <!-- Setting up the tab for form data --> 
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#loginform"> Log In!</a></li>
+                <li><a data-toggle="tab" href="#signupform"> Sign Up!</a></li>
+              </ul>
+
+              <!-- Setting up the toggable data for the tab nav -->
+              <div class="tab-content">
+                <!-- Login Form -->
+                <div class="tab-pane fade in active" id="loginform">
+                  <!-- Login JS -->
+                  <script type="text/javascript">
+
+                    $(document).ready(function() {
+     
+                    $("#login").submit(function(e) {
+                      e.preventDefault();
+
+                      #foreach($con in $dotcontent.pull("+contentType:CreateAccount +(conhost:886ab138-41c4-4b68-9c1c-2973afcca964 conhost:SYSTEM_HOST)",10,"modDate desc"))
+
+                        if($('#emailField').val() == "$con.email")
+                        {
+                          if($('#passwordField').val() != "$con.password")
+                          {
+                            alert("You have entered the wrong password!");
+                          }
+                          else
+                          {
+                            alert("Thank You " + "$con.firstname" + " for logging in!");
+                          }
+                        }
+                      
+                      alert("Sorry, your account doesn't exist");                   
+                      #end
+     
+                    
+                     });
+                    });
+                  </script>
+
+
+                  <form role="form" id="login">
+
+                    <div class="form-group">
+                      <label for="emailField">Email:</label>
+                      <input type="email" class="form-control" id="emailField" required placeholder="Enter Email">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="passwordField">Password:</label>
+                      <input type="password" class="form-control" id="passwordField" required placeholder="Enter Password">
+                    </div>
+
+                    <!-- Using bootstrap Submit button, MAY NEED TO SWTICH TO INPUT TYPE -->
+                    <button type="submit" class="btn btn-default" onclick="tryLogin();"> Login</button>
+                  </form>
+                </div>
+
+                <!-- Sign up Form -->
+                <div class="tab-pane fade" id="signupform">
+                <!-- Signup JS -->
+                 <script type="text/javascript">
+                   function checkPWD()
+                   {
+                    document.forms["signup"]["pwd2"].pattern = document.forms["signup"]["pwd1"].value;
+
+                    return false;
+                   }
+     
+                   $(document).ready(function() {
+     
+                    $("#signup").submit(function(e) {
+                      e.preventDefault();
+   
+                      var dataObj= 
+                      {
+                        'firstname': $('#firstName').val(),
+                        'lastname': $('#lastName').val(),
+                        'email': $('#emailField2').val(),
+                        'password': $('#passwordField22').val(),
+                        'stInode': '65a4d118-6678-4685-aec1-d64fca334e0a'
+                      };
+     
+                    $.ajax({
+                        url: '/api/content/publish/1',
+                        type: 'POST',
+                        cache: false,
+                        data: dataObj,
+                        beforeSend: function (request)
+                        {
+                          // This sends the user who authenticates against the dotCMS server
+                          // In a real world example, you could use session based authentication
+                          request.setRequestHeader("DOTAUTH", window.btoa("admin@dotcms.com:admin"));
+                        },
+   
+                        success: function(data,status,xhr) 
+                        {
+                          window.location = "/teachers";
+                        },
+                        error: function(data,status,xhr) 
+                        {
+                          alert("fail: " + data);
+                          console.log(data);
+                        },
+                      });
+                     });
+                    });
+                 </script>
+
+
+                  <form role="form" id="signup" name="signup">
+
+                    <div class="form-group">
+                      <label for="firstName">First Name:</label>
+                      <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="lastName">Last Name:</label>
+                      <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="emailField2">Email:</label>
+                      <input type="email" class="form-control" id="emailField2" placeholder="Enter Email" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="passwordField2">Password:</label>
+                      <input type="password" class="form-control" id="passwordField2" name="pwd1" placeholder="Enter Password" required onchange="checkPWD();">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="passwordField22">Re-Enter Password:</label>
+                      <input type="password" title="Password must match what was entered above." class="form-control" id="passwordField22" name="pwd2" placeholder="Re-Enter Password" required>
+                    </div>
+
+                    <!-- Using bootstrap Submit button, MAY NEED TO SWTICH TO INPUT TYPE -->
+                    <button type="submit" class="btn btn-default"> Sign Up</button>
+                  </form>
+                
+                </div>
+              </div> <!-- End of Form tabs  -->
+            </div> <!-- End of Well container -->
+          </div> <!-- End of col Container -->
+
+         </div> <!-- end first row -->
+
+         <!-- Row holding 3 information Wells -->
+         <br>
+         <div class="row">
+           <div class="col-md-4">
+             <div class="well boxers">
+               <h4>The Program</h4>
+               <p>This paragraph will hold quick bullet points about the program and a link to the Program page</p>
+             </div>
+           </div>
+           <div class="col-md-4">
+             <div class="well boxers">
+               <h4><a href="/pages/guest/about-us">About The Founders</a></h4>
+               <p>This paragraph will hold a picture, quick blurb, and a link to the About Us page</p>
+             </div>
+           </div>
+           <div class="col-md-4">
+             <div class="well boxers">
+               <h4>Next Session</h4>
+               <p>This Paragraph will hold quick information about the next summer session and a link to the FAQs</p>
+             </div>
+           </div>
+         </div> <!-- End of 2nd Row -->
+
+         <div class="row">
+           <div class="panel panel-default">
+             <div class="panel-heading">
+               <h3>Recent Reviews</h3>
+               <p class="text-right"><small><a href="/pages/guest/reviews">See All Reviews...</a></small></p>
+             </div>
+             <div class="panel-body boxers">
+                <!-- Carsousel to display user reviews -->
+               <div class="carousel slide" data-ride="carousel" data-interval="5000" data-pause="hover">
+
+                 <!-- Items In carsouel should be placed in blockquotes -->
+                 <div class="carousel-inner">
+                  #set($count = 0)
+                  #foreach($con in $dotcontent.pull("+contentType:UserReviews +(conhost:886ab138-41c4-4b68-9c1c-2973afcca964 conhost:SYSTEM_HOST)",10,"modDate desc"))
+
+                    #if($count == 0)
+                      <div class="item active">
+                        <blockquote>
+                          <p>$con.review</p>
+                          <footer>$con.name</footer>
+                        </blockquote>
+                      </div>
+                      #set($count = $count + 1)
+                    #else
+                      <div class="item">
+                        <blockquote>
+                        <p>$con.review</p>
+                        <footer>$con.name</footer>
+                        </blockquote>
+                      </div>
+                    #end
+                  #end
+    
+                 </div>
+               </div> <!-- End of Carousel -->
+
+             </div> <!-- End of panel-body --> 
+           </div> <!-- End of Panel -->
+         </div> <!-- End of 3rd Row -->
+
+      </div> <!-- end of home page COL container -->
+    </div> <!-- end of home page ROW container -->
+  </div> <!-- end container -->
+</body>
+
+</html>
