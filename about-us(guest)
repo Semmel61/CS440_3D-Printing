@@ -1,0 +1,143 @@
+<html>
+<head>
+    <title>About The Founders</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- This is the header jumbotron -->
+    <div class="row" style="background-color:white">
+     <div class="col-md-12">
+      <h1>Gettysburg College 3D Printing Camp</h1>
+     </div>
+    </div>
+
+    <!-- This row is for the nav menu -->
+    <!-- MOVE JUMBOTRON INFO BEFORE navbar-inverse -->
+   <div class="row">
+    <div class="col-xs-12 col-md-12" id="navmenu">
+      <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/index">
+            <img src="/photos/Gburg G2.jpg">
+          </a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/index">Home</a></li>
+          <li><a href="/pages/guest/about-us">About Us</a></li>
+          <li><a href="/pages/guest/teachers">Teachers</a></li>
+          <li><a href="/pages/guest/program">The Program</a></li>
+          <li><a href="/pages/guest/reviews">Reviews</a></li>
+        </ul>
+      </nav>
+    </div>
+   </div>
+
+   <style type="text/css">
+    .boxers
+     {
+      background-color: #f5be08;
+     }
+
+     .bannerx
+     {
+      background-color: #1f4b6c;
+      opacity: 0.6;
+      right: 0%;
+      left: 0%;
+     }
+     .pagecolor
+     {
+      background-color:lightblue;
+     }
+
+   </style>
+ </head>
+
+  <body>
+    <!-- OVERRALL Container tag -->
+    <div class="container-fluid pagecolor">
+      <!-- Row to create space -->
+      <div class="row">
+        <br><br>
+      </div>
+      <!-- Row To hold Banner Image -->
+      <div class="row">
+        <div class="well boxers">
+          <img src="/photos/Gburg infograph.jpg" style="width:100%; height:100;">
+          <p><center><h1 style="border-style:double;">About Our Founders</h1></center></p>
+        </div>
+      </div>
+
+      <!-- Row To hold Blurb and IMG BAR -->
+      <div class="row">
+
+        <!-- Holds the Blurbs -->
+        <div class="col-md-6 col-md-offset-2">
+
+          <!-- Row to hold Mission State Blurb -->
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="well boxers">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3>Our Mission</h3>
+                  </div>
+                  <div class="panel-body">
+                    <ul>
+                      <li>Virtue 1</li>
+                      <br>
+                      <li>Virtue 2</li>
+                      <br>
+                      <li>Virtue 3</li>
+                  </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End of Mission Statement Row -->
+
+          <!-- Row to talk about founders -->
+          <div class="row">
+            <div class="col-md-4">
+              <div class="well boxers">
+                <img src="/pages/guest/photos/founders.jpg" style="width:100%;">
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="well boxers">
+                <p>The key thing to take away from the SEOmoz About Us page is that sometimes more is more. If you have accomplishments and awards and other things that people will respond to then you should use them. If you can present it in a tasteful and non-cluttering way as they have done you will be all the better off. </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row to talk about founders -->
+          <div class="row">
+            <div class="col-md-4">
+              <div class="well boxers">
+                <img src="/pages/guest/photos/founders.jpg" style="width:100%;">
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="well boxers">
+                <p>The key thing to take away from the SEOmoz About Us page is that sometimes more is more. If you have accomplishments and awards and other things that people will respond to then you should use them. If you can present it in a tasteful and non-cluttering way as they have done you will be all the better off. </p>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- End of Blurbs section -->
+
+        <div class="col-md-3 col-md-offset-1">
+          <div class="well boxers">
+            <p>
+              IMG BAR WILL GO HERE
+            </p>
+          </div>
+        </div>
+
+      </div> <!-- End of Row to Hold blurbs and IMG ROW -->
+
+
+    </div> <!-- End of overall container tag -->
+  </body>
+</html>
