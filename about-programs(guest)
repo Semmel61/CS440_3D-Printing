@@ -1,0 +1,101 @@
+<html>
+ <head>
+    <title>About The Program</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- This is the header jumbotron -->
+    <div class="row" style="background-color:white">
+     <div class="col-md-12">
+      <h1>Gettysburg College 3D Printing Camp</h1>
+     </div>
+    </div>
+
+    <!-- This row is for the nav menu -->
+    <!-- MOVE JUMBOTRON INFO BEFORE navbar-inverse -->
+   <div class="row">
+    <div class="col-xs-12 col-md-12" id="navmenu">
+      <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/index">
+            <img src="/photos/Gburg G2.jpg">
+          </a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/index">Home</a></li>
+          <li><a href="/pages/guest/about-us">About Us</a></li>
+          <li><a href="/pages/guest/teachers">Teachers</a></li>
+          <li><a href="/pages/guest/program">The Program</a></li>
+          <li><a href="/pages/guest/reviews">Reviews</a></li>
+        </ul>
+      </nav>
+    </div>
+   </div>
+
+   <style type="text/css">
+    .boxers
+     {
+      background-color: #f5be08;
+     }
+
+     .bannerx
+     {
+      background-color: #1f4b6c;
+      opacity: 0.6;
+      right: 0%;
+      left: 0%;
+     }
+     .pagecolor
+     {
+      background-color:lightblue;
+     }
+
+   </style>
+ </head>
+
+<body>
+   <!--container fluid to use rows -->
+  <div class="container-fluid pagecolor">
+  <br><br>
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Programs!</h1>
+      <!-- Row holding 3 information Wells -->
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="well boxers">
+            <h4>3D Printing 101</h4>
+              <p>This course offer the basics that any student should know about 3D Printing. Most of the ojects for this class will be smaller scale and simple designs.</p>
+              <p> Taught By: Professor Rudy </p>
+          </div>
+        </div>
+      </div>
+      <br>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="well boxers">
+              <h4>3D Printing 103</h4>
+              <p>This is the starting level class for the intermediate level program for the summer. This class will focus on smaller details to items and work closer with different programing softwares.</p>
+              <p> Taught By: Professor Smith </p>
+            </div>
+          </div>
+        </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="well boxers">
+            <h4>3D Printing 105</h4>
+            <p>This This is the starting class for the upper level program for the summer. The items students will create are very detailed and items will be larger than other classes.</p>
+            <p> Taught By: Professor Presser </p>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- End of Col holding program info -->
+
+  </div> <!-- end of container-fluid container -->
+</body>
+
+
+</html>
