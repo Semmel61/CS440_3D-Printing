@@ -1,0 +1,179 @@
+<html>
+ <head>
+     <title>Welcome Student</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- This is the header jumbotron -->
+    <div class="row" style="background-color:white">
+     <div class="col-md-12">
+      <h1>Gettysburg College 3D Printing Camp</h1>
+     </div>
+    </div>
+
+    <!-- This row is for the nav menu -->
+    <!-- MOVE JUMBOTRON INFO BEFORE navbar-inverse -->
+   <div class="row">
+    <div class="col-xs-12 col-md-12" id="navmenu">
+      <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/index">
+            <img src="/photos/Gburg G2.jpg">
+          </a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/index">Home</a></li>
+          <li><a href="/pages/guest/about-us">About Us</a></li>
+          <li><a href="/pages/guest/teachers">Teachers</a></li>
+          <li><a href="/pages/guest/program">The Program</a></li>
+          <li><a href="/pages/guest/reviews">Reviews</a></li>
+        </ul>
+      </nav>
+    </div>
+   </div>
+
+   <style type="text/css">
+    .boxers
+     {
+      background-color: #f5be08;
+     }
+
+     .bannerx
+     {
+      background-color: #1f4b6c;
+      opacity: 0.6;
+      right: 0%;
+      left: 0%;
+     }
+     .pagecolor
+     {
+      background-color:blue;
+     }
+
+   </style>
+ </head>
+<body>
+  <!--container fluid to use rows -->
+  <div class="container-fluid pagecolor">
+    <p></p>
+    <p></p>
+    <h1></h1>
+    <div class="row">
+      <div class=" col-md-5">
+        <div class="well boxers">
+          <h2> Upload Photos </h2>
+            <script type="text/javascript" >
+
+              $(document).ready(function() {
+
+                $("#upload").submit(function(e) {
+
+                 var dataform = {'photo': $('#photo').val(),
+                  'stName':'Gburguploadphotos' };
+
+
+                 $.ajax({
+                    url: '/api/content/publish/1',
+                    type: 'PUT',
+                    cache:false,
+                    data: dataform,
+
+                  // processData: false,
+                  // contentType: false,
+                   beforeSend: function (request){
+                  // This sends the user who authenticates against the dotCMS server
+                  // In a real world example, you could use session based authentication
+                  request.setRequestHeader("DOTAUTH", window.btoa("admin@dotcms.com:admin"));
+                },
+
+                success: function(data,status,xhr) {
+                    console.log("WORKS");
+                    window.location = "http://dotcms.com";
+                },
+                 error: function(data,status,xhr) {
+                   alert("fail: " + data);
+                  console.log(data);
+                },
+                });
+               });
+
+              });
+            </script>
+              <form id="upload">
+                <input type="file" id="myFile" multiple size="50" >
+                  <button type="submit" class="btn btn-primary btn-lg">
+                    <span class="glyphicon glyphicon-upload"></span> Upload
+                  </button>
+
+              </form>
+            </div>
+        
+
+        </div>
+        <div class=" col-md-7">
+          <h1><font color="white">My Photos</font></h1>
+          #foreach($con in $dotcontent.pull("+contentType:Gburgphoto +(conhost:ec241c1d-cb5c-4d01-8620-6b2954731363 conhost:SYSTEM_HOST)",10,"modDate desc"))
+
+          <img src="/contentAsset/image/$con.image.map.identifier/fileAsset/filter/Resize/resize_w/250" />
+
+          #end
+
+        </div>
+
+        <div class="container-fluid">
+
+          <div class="row">
+           <div class="col-md-5" >
+            <div class="well boxers">
+               <h4>3D Printing 101</h4>
+                <p>This course offer the basics that any student should know about 3D Printing. Most of the ojects for this class will be smaller scale and simple designs.</p>
+                <p> Taught By: Professor Rudy </p>
+                <br>
+                <button type="button" class="btn btn-primary btn-lg" value="Courses">
+                  <span class="glyphicon glyphicon-book"></span> Courses
+                </button>
+
+                <button type="button" class="btn btn-primary btn-lg" value="Projects">
+                  <span class="glyphicon glyphicon-folder-open"></span> Projects
+                </button>
+            </div>
+            
+          </div> 
+
+          <div class="col-md-7" >
+            <h1><font color="white">Everyones Photos</font></h1>
+
+            <div class="carousel-inner">
+             #set($count = 0)
+             #foreach($con in $dotcontent.pull("+contentType:Gburgphoto +(conhost:ec241c1d-cb5c-4d01-8620-6b2954731363 conhost:SYSTEM_HOST)",10,"modDate desc"))
+
+             #if($count == 0)
+             <div class="item active">
+              <img src="/contentAsset/image/$con.image.map.identifier/fileAsset/"/>
+              #set($count = $count + 1)
+              #else
+              <div class="item">
+                #end
+                
+              </div>
+              
+              #end
+            </div>
+
+          </div>
+        </div>
+        <div class="row" style="height=100%">
+          <h2><font color="white">Teachers Blog</font></h2>
+         <div class="col-md-12" style="background-color:orange;">
+            #foreach($con in $dotcontent.pull("+contentType:Teacherblog +(conhost:c72bd700-509f-4b28-a03d-a521a4c9f941 conhost:SYSTEM_HOST)",10,"modDate desc"))
+            
+            <h3><b>$con.blogtitle</b></h3>
+            <b>$con.blogtext</b><br> </br>
+            $con.blogtime<br></br>
+            $con.blogposter<br></br>
+          #end
+        </div> <!-- Ends Row -->
+      </div> <!-- Ends Container-fluid -->
+    </body>
+    </html>
