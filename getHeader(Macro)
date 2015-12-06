@@ -1,0 +1,77 @@
+#macro ( getHeader )
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- This is the header jumbotron -->
+    <div class="row" style="background-color:white">
+     <div class="col-md-12">
+      <h1>Gettysburg College 3D Printing Camp</h1>
+     </div>
+    </div>
+
+     <nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			 <a class="navbar-brand" href="/index">
+            		<img src="/photos/Gburg G2.jpg">
+          		</a>
+    		</div>
+    		<div>
+      			<ul class="nav navbar-nav">
+        			<li><a href="/index">Home</a></li>
+          			<li><a href="/pages/guest/about-us">About Us</a></li>
+          			<li><a href="/pages/guest/teachers">Teachers</a></li>
+          			<li><a href="/pages/guest/program">The Program</a></li>
+          			<li><a href="/pages/guest/reviews">Reviews</a></li>
+      			</ul>
+      			<ul class="nav navbar-nav navbar-right">
+        			<!-- Check if there is a session or create one -->
+					#set($session = $request.getSession())
+					<!-- See if there is a stored session by checking the session attribute -->
+					#set($userID = $session.getAttribute("userID"))
+
+					<!-- Check if the session exist -->
+					#if($userID)
+						<!-- get the hashmap of inode fields using the $user object -->
+						#set($userInfoMap = $cmsuser.getUserProxy($user).getMap())
+
+						<li><a href="/pages/students/student-dash"><span class="glyphicon glyphicon-user"></span> Hi, $userInfoMap.firstName</a></li>
+						<li><a href="/dotCMS/logout?referrer=/"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			
+
+					#else
+				 		<li><a href="#" data-toggle="popover" data-placement="left" title="Please Log In" data-html="true" data-content='#set($loginFormSourceCode = "/vtls/myloginform.vtl") #loginForm()'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+				 		<script type="text/javascript">
+				 			$(document).ready(function()
+				 			{
+				 				$('[data-toggle="popover"]').popover();
+				 			});
+				 		</script>
+					#end
+      			</ul>
+    		</div>
+  		</div>
+	</nav>
+
+	<style type="text/css">
+    .boxers
+     {
+      background-color: #f5be08;
+     }
+
+     .bannerx
+     {
+      background-color: #1f4b6c;
+      opacity: 0.6;
+      right: 0%;
+      left: 0%;
+     }
+     .pagecolor
+     {
+      background-color:lightblue;
+     }
+
+   </style>
+#end
