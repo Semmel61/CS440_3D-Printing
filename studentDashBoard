@@ -1,0 +1,195 @@
+<html>
+<head>
+  #getHeader()
+
+  #if($user)
+  #set($session = $request.getSession())
+  #set($studentId = $session.getAttribute("userID"))
+  #set($userInfoMap = $cmsuser.getUserProxy($user).getMap())
+
+  ## Is there a student tuple in the student content type with sessionID
+
+  #foreach($con in $dotcontent.pull("+contentType:Studentstarter +(conhost:886ab138-41c4-4b68-9c1c-2973afcca964 conhost:SYSTEM_HOST)",10,"modDate desc"))
+
+    #if($studentId == $con.studentid)
+      #set($inStudent = true)
+    #end
+
+  #end
+
+  #if( ! $inStudent)
+
+    <script type="text/javascript">
+      $(document).ready(function() 
+      {
+        var dataObj=
+                       {
+                        'stName':'Studentstarter',
+                        'studentid':'$studentId',
+                        'studentname':'$userInfoMap.fullName',
+                        'classid':'$userInfoMap.var3',
+                        'Classstarter-Studentstarter':"+contentType:Classstarter +title:$userInfoMap.var3"
+                        };
+
+                 $.ajax({
+                        url: '/api/content/publish/1',
+                        type: 'POST',
+                        cache: false,
+                        data: dataObj,
+                        beforeSend: function (request)
+                        {
+                          // This sends the user who authenticates against the dotCMS server
+                          // In a real world example, you could use session based authentication
+                          request.setRequestHeader("DOTAUTH", window.btoa("admin@dotcms.com:admin"));
+                        },
+                      
+                        success: function(data,status,xhr) 
+                        {
+                          alert("Success");
+                          window.location = "/pages/students/student-dash";
+                        },
+                        error: function(data,status,xhr) 
+                        {
+                          alert("fail: " + data);
+                          console.log(data);
+                        },
+                      });
+
+      });
+    </script>
+  #end
+
+#else
+  ## make redirect page to tell users to login OR change to script with
+  ## window alert
+  ## $response.sendRedirect("/index")
+  ## #stop
+  
+
+#end
+
+</head>
+<body>
+  <div class="container-fluid pagecolor">
+
+    <br><br><br>
+    <!-- To hold Student Photos/Upload -->
+    <div class="row">
+
+      <!-- For My Photos/ Class Photo -->
+      <div class="col-md-6 col-md-offset-2">
+        <div class="well boxers">
+          <p><center><h2>My Files</h2></center></p>
+
+            #foreach($con in $dotcontent.pull("+contentType:Studentstarter +(conhost:886ab138-41c4-4b68-9c1c-2973afcca964 conhost:SYSTEM_HOST)",10,"modDate desc"))
+
+              #if($con.studentid == $studentId)
+                #set($contentID = $con.identifier)
+              #end
+
+            #end
+
+            #foreach($content in $dotcontent.pullRelated("Studentstarter-Studentuploads","$contentID",false,10))  
+
+               <img src="/contentAsset/image/$content.identifier/uploads/filter/Thumbnail/thumbnail_w/100/thumbnail_h/100/thumbnail_bg/000000000"/>    
+              
+            #end
+
+          
+
+        </div> <!-- End of boxer -->
+        <div class="well boxers">
+          <p><center><h2>Class Files</h2></center></p>
+
+            #foreach($con in $dotcontent.pull("+contentType:Classstarter +(conhost:886ab138-41c4-4b68-9c1c-2973afcca964 conhost:SYSTEM_HOST)",10,"modDate desc"))
+
+              #if($con.classid == $userInfoMap.var3)
+                #set($contentID = $con.identifier)
+              #end
+
+            #end
+
+            #foreach($content in $dotcontent.pullRelated("Classstarter-Studentuploads","$contentID",false,10))
+
+               <img src="/contentAsset/image/$content.identifier/uploads/filter/Thumbnail/thumbnail_w/100/thumbnail_h/100/thumbnail_bg/000000000"/>    
+              
+            #end
+
+          
+
+        </div> <!-- End of boxer -->
+      </div> <!-- End of my photos -->
+
+      <!-- For Upload-->
+      <div class="col-md-2 col-md-offset-1">
+        <div class="well boxers">
+          <p><center><h4>Add A File Here!</h4></center></p>
+          <script type="text/javascript">
+            $(document).ready(function() {
+     
+                    $("#upload").submit(function(e) {
+                      e.preventDefault();
+   
+                      var json= 
+                      {
+                        'stName': 'studentuploads',
+                        'studentid':'$studentId',
+                        'classid': '$userInfoMap.var3',
+                        'Classstarter-Studentuploads':"+contentType:Classstarter +title:$userInfoMap.var3",
+                        'Studentstarter-Studentuploads':"+contentType:Studentstarter +title:$studentId",
+
+                      };
+
+                      var dataform = new FormData();
+                      dataform.append('json',JSON.stringify(json))
+                      dataform.append('file', document.getElementById('myFile').files[0]);
+     
+                    $.ajax({
+                        url: '/api/content/publish/1',
+                        type: 'POST',
+                        cache: false,
+                        data: dataform,
+                        processData: false,
+                        contentType: false,
+                        beforeSend: function (request)
+                        {
+                          // This sends the user who authenticates against the dotCMS server
+                          // In a real world example, you could use session based authentication
+                          request.setRequestHeader("DOTAUTH", window.btoa("admin@dotcms.com:admin"));
+                        },
+                      
+                        success: function(data,status,xhr) 
+                        {
+                          alert("File Uploaded");
+                          window.location = "/pages/students/student-dash";
+                        },
+                        error: function(data,status,xhr) 
+                        {
+                          alert("fail: " + data);
+                          console.log(data);
+                        },
+                      });
+                     });
+                    });
+              </script>
+
+          <form id="upload">
+            <input type="file" id="myFile" name="myFile" multiple>
+
+
+            <button type="submit" class="btn btn-primary btn-lg">
+
+              <span class="glyphicon glyphicon-upload"></span> Upload
+            </button>
+          </form>
+        </div>
+      </div>
+      
+    </div> <!-- End of My photos, Upload Row -->
+    
+  </div> <!-- End of Fluid tag -->
+</body>
+</html>
+
+
+
