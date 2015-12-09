@@ -1,0 +1,16 @@
+<div class="container-fluid">
+<h1>Topics of the Summer Camp!</h1>
+  <div class="row">
+    <div class="col-12">
+    <div class="well boxers" style="background-color:Orange;">
+      	   <ul>
+  	     <li>Setup and configuration of 3D printers</li>
+  	     <li>Printing parameters and configuration options</li>
+  	     <li>Scaling, Rotation, and Positioning 3D objects</li>
+	     <li>Slicing 3d objects and comparing different slicing programs</li>
+	     <li>Designing and modeling 3D objects with various open source 3D modeling programs</li>
+           </ul> 
+	</div>
+    </div>
+  </div>
+</div>
