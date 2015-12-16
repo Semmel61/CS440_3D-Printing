@@ -1,0 +1,58 @@
+//for this section, we need to run through a for loop to see how many tabs we need to create for the nav bar
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#class101">Class 101</a></li>
+  <li><a data-toggle="tab" href="#class102">Class 102</a></li>
+  <li><a data-toggle="tab" href="#class103">Class 103</a></li>
+</ul>
+
+//Next, we need to build the content for the tabs that were created. The first tab needs to be active
+
+<div class="tab-content">
+  <div id="class101" class="tab-pane fade in active">
+    <h3>Class 101</h3>
+      <div class="container-fluid pagecolor">
+        <div class="page-header">
+          <h1><font color= "black">Teacher's Blog</font></h1>
+        </div>
+      <br>
+        <div class="well boxers">
+          <table class="table table-striped">
+            #foreach($con in $dotcontent.pull("+contentType:Classblog +(conhost:1d929d7f-e973-442d-9432-723fccdf7b20 conhost:SYSTEM_HOST)",10,"title asc"))
+
+            <tbody>
+              <td><blockquote><h2>$con.posttitle</h2><p>$con.post</p><footer>$con.teacherid , $con.date</footer></blockquote></td>
+            </tbody>
+
+            #end
+          </table>
+        </div>
+      </div> <!-- End of container-fluid -->
+  </div>
+  
+  // This is for the second class and others. This builds the rest of the tabs needed for the nav bar
+
+  <div id="class102" class="tab-pane fade">
+    <h3>Class 102</h3>
+    <div class="container-fluid pagecolor">
+        <div class="page-header">
+          <h1><font color= "black">Teacher's Blog</font></h1>
+        </div>
+      <br>
+        <div class="well boxers">
+          <table class="table table-striped">
+            #foreach($con in $dotcontent.pull("+contentType:Classblog +(conhost:1d929d7f-e973-442d-9432-723fccdf7b20 conhost:SYSTEM_HOST)",10,"title asc"))
+
+            <tbody>
+              <td><blockquote><h2>$con.posttitle</h2><p>$con.post</p><footer>$con.teacherid , $con.date</footer></blockquote></td>
+            </tbody>
+
+            #end
+          </table>
+        </div>
+      </div> <!-- End of container-fluid -->
+  </div>
+  <div id="class103" class="tab-pane fade">
+    <h3>Class 103</h3>
+    <p>Some content in menu 2.</p>
+  </div>
+</div>
